@@ -9,11 +9,8 @@ import ru.netology.domain.entities.User;
 import ru.netology.domain.utils.DataGenerator;
 
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AppCardDeliveryTest {
