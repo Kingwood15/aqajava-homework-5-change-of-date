@@ -25,11 +25,10 @@ public class DataGenerator {
 
     @UtilityClass
     public static class Registration {
-        public static User generateUser(String locale, int shiftDate) {
+        public static User generateUser(String locale) {
             Faker faker = new Faker(new Locale(locale));
             int cityIndex = rnd(0, 84);
-            System.out.println("\ncityIndex: " + cityIndex);
-            return new User(selectCity[cityIndex], generateDate(shiftDate), faker.name().lastName() + " " + faker.name().firstName(), faker.phoneNumber().phoneNumber());
+            return new User(selectCity[cityIndex], faker.name().lastName() + " " + faker.name().firstName(), faker.phoneNumber().phoneNumber());
         }
     }
 
@@ -43,13 +42,5 @@ public class DataGenerator {
 
     public String generateDate(int days) {
         return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-    }
-
-    public void printTestData(String city, String date, String name, String phone) {
-        System.out.println(city + "\n" + date + "\n" + name + "\n" + phone + "\n");
-    }
-
-    public void printTestData(User user) {
-        printTestData(user.getCity(), user.getDate(), user.getName(), user.getPhone());
     }
 }

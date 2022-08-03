@@ -23,55 +23,55 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderAdminCenter() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
-        DataGenerator.printTestData(user);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderAdminCenterHyphenated() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String cityHyphenated = "Южно-Сахалинск";
-        DataGenerator.printTestData(cityHyphenated, user.getDate(), user.getName(), user.getPhone());
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(cityHyphenated);
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderCityNotAdminCenter() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String cityNotAdminCenter = "Стерлитамак";
-        DataGenerator.printTestData(cityNotAdminCenter, user.getDate(), user.getName(), user.getPhone());
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(cityNotAdminCenter);
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -84,14 +84,14 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderCityLatin() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String latinCity = "Kazan";
-        DataGenerator.printTestData(latinCity, user.getDate(), user.getName(), user.getPhone());
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(latinCity);
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -104,13 +104,13 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderDateOld() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", -3);
-        DataGenerator.printTestData(user);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(-3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -123,13 +123,13 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderDateActual() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 0);
-        DataGenerator.printTestData(user);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(0);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -142,55 +142,55 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderDateFuture() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 150);
-        DataGenerator.printTestData(user);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(150);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderNameHyphen() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String hyphenName = "Сергеев-Петров Андрей";
-        DataGenerator.printTestData(user.getCity(), user.getDate(), hyphenName, user.getPhone());
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(hyphenName);
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderNameLatin() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String latinName = "Sirotkin Dmitry";
-        DataGenerator.printTestData(user.getCity(), user.getDate(), latinName, user.getPhone());
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(latinName);
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -203,76 +203,76 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestOrderPhoneLowLength() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String lowLengthPhone = "123";
-        DataGenerator.printTestData(user.getCity(), user.getDate(), user.getName(), lowLengthPhone);
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(lowLengthPhone);
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderPhoneHighLength() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String highLengthPhone = "+71234567890123456";
-        DataGenerator.printTestData(user.getCity(), user.getDate(), user.getName(), highLengthPhone);
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(highLengthPhone);
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderPhoneText() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
         String textPhone = "number";
-        DataGenerator.printTestData(user.getCity(), user.getDate(), user.getName(), textPhone);
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(textPhone);
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
 
         $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(Condition.text("Встреча успешно запланирована на " + user.getDate()), Duration.ofSeconds(5))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
                 .shouldBe(Condition.visible);
     }
 
     @Test
     void shouldTestOrderCheckboxOff() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
-        DataGenerator.printTestData(user);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(3);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("form button.button").click();
@@ -284,15 +284,14 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestReplanOrder() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(3);
         String replanDate = DataGenerator.generateDate(10);
-        DataGenerator.printTestData(user);
-        System.out.println("replanDate: " + replanDate);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -316,15 +315,14 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestReplanOrderBackToTime() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 10);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(10);
         String replanDate = DataGenerator.generateDate(5);
-        DataGenerator.printTestData(user);
-        System.out.println("replanDate: " + replanDate);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -348,15 +346,14 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestReplanOrderBackToPast() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 3);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(3);
         String replanDate = DataGenerator.generateDate(-3);
-        DataGenerator.printTestData(user);
-        System.out.println("replanDate: " + replanDate);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
@@ -378,15 +375,14 @@ public class AppCardDeliveryTest {
     @Test
     void shouldTestReplanOrderBackToToday() {
         SelenideElement form = $(".form");
-        User user = DataGenerator.Registration.generateUser("ru", 5);
+        User user = DataGenerator.Registration.generateUser("ru");
+        String date = DataGenerator.generateDate(5);
         String replanDate = DataGenerator.generateDate(0);
-        DataGenerator.printTestData(user);
-        System.out.println("replanDate: " + replanDate);
 
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
-        form.$("[data-test-id = 'date'] input").setValue(user.getDate());
+        form.$("[data-test-id = 'date'] input").setValue(date);
         form.$("[data-test-id = 'name'] input").setValue(user.getName());
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
