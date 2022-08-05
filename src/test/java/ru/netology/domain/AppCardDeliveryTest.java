@@ -332,7 +332,12 @@ public class AppCardDeliveryTest {
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
+
+        $("[data-test-id=success-notification] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
+                .shouldBe(Condition.visible);
         refresh();
+
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
@@ -363,7 +368,12 @@ public class AppCardDeliveryTest {
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
+
+        $("[data-test-id=success-notification] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
+                .shouldBe(Condition.visible);
         refresh();
+
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
@@ -392,7 +402,12 @@ public class AppCardDeliveryTest {
         form.$("[data-test-id = 'phone'] input").setValue(user.getPhone());
         form.$("[data-test-id = 'agreement']").click();
         form.$("form button.button").click();
+
+        $("[data-test-id=success-notification] .notification__content")
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + date), Duration.ofSeconds(5))
+                .shouldBe(Condition.visible);
         refresh();
+
         form.$("[data-test-id = 'city'] input").setValue(user.getCity());
         form.$("[data-test-id = 'date'] input").doubleClick();
         $("[data-test-id=date] input").sendKeys(Keys.BACK_SPACE);
